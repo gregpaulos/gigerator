@@ -1,0 +1,37 @@
+{% extends "_venuebase.html" %}
+
+{% block title %} - Search Venues{% endblock %}
+
+
+
+{% block content %}
+
+
+{% if errors %}
+
+{% for error in errors%}
+
+{{error}}
+
+{% endfor %}
+
+{% endif %}
+
+<br>
+
+<form action = "/search/" method="get">
+	<input type="text" name="q">
+	<input type="submit" value="Search">
+
+
+<br>
+<br>
+
+
+
+
+Go back to <a href="/mygigs/"> my gigs</a>
+
+<br>
+<br>
+{% endblock %}

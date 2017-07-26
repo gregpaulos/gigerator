@@ -1,0 +1,103 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+
+
+<br>
+<h1>{{venue.name}}
+</h1>
+<h4>{{venue.city}}, {{venue.state}}</h4>
+<br>
+{{venue.googleaddress}}
+<br>
+{% if venue.googlephone == "NOTHING" %}
+Phone number: unknown
+{% else %}
+{{venue.googlephone}}
+{% endif %}
+<br>
+{% if venue.googlewebsite == "NOTHING" %}
+Website: unknown
+{% else %}
+{{venue.googlewebsite|urlize}}
+{% endif %}
+<br>
+
+
+<br>
+<br>
+
+{% if bands %}
+<b>Bands who have recently played here:</b>
+{% for band in bands %}
+{{band}}{% if not forloop.last %}{% ifequal forloop.revcounter 2 %}, and {% else %}, {% endifequal %}{% else %}{% endif %}
+{% endfor %} 
+
+{% endif %}
+
+<br>
+<br>
+
+<h4> Comments:</h4>
+<p class="centercomments">{{review.comments}}</p>
+<br>
+<h4>Overall Rating: {{review.overall_rating}} stars</h4>
+<br>
+
+
+
+
+Detailed Ratings:
+
+
+
+
+  <table class="table table-hover">
+  <tr>
+    <th>Element</th>
+    <th>Rating</th> 
+  </tr>
+
+{% for key, item in cleanreview.items %}
+{% if key == " state" or key == "id" or key == "venue id" or key == "comments" %}
+
+{% else %}
+<tr>
+<td>{{key|title}}: </td>  
+{% if item == 99 or item == None%}
+<td>No rating</td>  
+</tr>
+{%else%}
+<td>{{item}} stars</td>  
+</tr>
+{% endif %}
+
+{% endif %}
+
+{% endfor %}
+ 
+</table>
+
+
+
+
+<br>
+<br>
+
+
+  <div>
+Want to review this venue? Add another review with our <a href="/review/{{venue.id}}"> Review Form</a>
+</div>
+
+
+<br>
+<br>
+
+<br>
+<br>
+
+Go back to <a href="/venue/{{venue.id}}"> this venue's page</a>
+<br>
+<br>
+<br>
+{% endblock %}

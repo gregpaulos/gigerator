@@ -1,0 +1,19 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+{% load bootstrap_tags %}
+
+
+<h3>Add a Venue</h3>
+
+ <form id="venueform" method="post" action="" enctype="multipart/form-data">
+ {% csrf_token %} 
+
+{{form | as_bootstrap}}
+
+ <input type="submit" value="Submit" class="btn btn-primary">
+
+</form>
+
+
+{% endblock %}

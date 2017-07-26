@@ -1,0 +1,21 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+
+
+<h5>Results</h5>
+
+{% for band in bands %}
+
+<a href="/bandadd/{{band.id}}">{{band.name}}</a> 
+<br>
+{% endfor %}
+
+
+<br>
+<br>
+Go back and <a href="/bandsearchform/"> search again</a>
+
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+
+h4 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+}
+
+
+.centercomments {
+    text-align: center;
+}
+
+
+/*takes out bullets from list*/
+ul { list-style-type: none; }
+
+/*displays list horizontally*/
+ul li { display: inline; }
+
+
+

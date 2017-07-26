@@ -1,0 +1,142 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+
+
+<br>
+<h1>{{venue.name}}
+</h1>
+<h4>{{venue.city}}, {{venue.state}}</h4>
+<br>
+{{venue.googleaddress}}
+<br>
+{% if venue.googlephone == "NOTHING" %}
+Phone number: unknown
+{% else %}
+{{venue.googlephone}}
+{% endif %}
+<br>
+{% if venue.googlewebsite == "NOTHING" %}
+Website: unknown
+{% else %}
+{{venue.googlewebsite|urlize}}
+{% endif %}
+<br>
+
+<br>
+<br>
+
+{% if bands %}
+<b>Bands who have recently played here:</b>
+{% for band in bands %}
+{{band}}{% if not forloop.last %}{% ifequal forloop.revcounter 2 %}, and {% else %}, {% endifequal %}{% else %}{% endif %}
+{% endfor %} 
+
+{% endif %}
+
+<br>
+<br>
+
+<h4>Gigerator Reviews</h4>
+
+{% if reviews.all %}
+
+<h5>Average overall rating: {{avgreview.overall_rating__avg}} stars</h5>
+<br>
+
+{#{avgsound}#}
+
+
+  <table class="table table-hover">
+  <tr>
+    <th>Review</th>
+    <th>Rating</th> 
+    <th>For more details</th>
+  </tr>
+
+  {% for review in reviews %}
+
+  <tr>
+
+    <td>         
+    {{review.comments}}
+   
+    </td> 
+
+    <td>
+    {{review.overall_rating}} stars
+     </td>
+
+    <td>
+      <a href="/reviewdetails/{{review.id}}">See more of this review</a>
+    </td>
+  </tr>
+
+  {% endfor %} 
+
+</table>
+
+
+  <div>
+Want to review this venue? Add another review with our <a href="/review/{{venue.id}}"> Review Form</a>
+</div>
+
+
+{% else %}
+
+No reviews of this venue yet. Be the first to review this venue at <a href="/review/{{venue.id}}"> Review Form</a>
+
+{% endif %}
+
+<br>
+<br>
+
+<h4>Google Reviews</h4>
+{% if googlereviews.all %}
+  <table class="table table-hover">
+  <tr>
+    <th>Review</th>
+    <th>Rating</th> 
+ 
+  </tr>
+
+  {% for review in googlereviews %}
+
+  {% if review.review == '' %}
+
+  {% else %}
+
+  <tr>
+
+    <td>         
+    {{review.review}}
+   
+    </td> 
+
+    <td>
+    {{review.rating}} stars
+     </td>
+
+
+
+  </tr>
+
+  {% endif %}
+
+  {% endfor %} 
+
+</table>
+
+
+{% else %}
+
+No google reviews of this venue. 
+
+{% endif %}
+
+<br>
+<br>
+
+<br>
+<br>
+{% endblock %}

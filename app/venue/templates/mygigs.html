@@ -1,0 +1,67 @@
+{% extends "_venuebase.html" %}
+
+{% block title %} - My Gigs{% endblock %}
+
+
+{% block content %}
+
+<h2>Ye of {% for band in venuesdic %}
+{{band}}{% if not forloop.last %}{% ifequal forloop.revcounter 2 %}, and {% else %}, {% endifequal %}{% else %}{% endif %}
+{% endfor %} 
+fame, we salute you! </h2>
+
+<br>
+
+{% for band, venues in venuesdic.items %}
+
+<h3>Looks like {{band}} recently played at:</h3>
+
+
+<table class="table table-hover">
+ 
+  {% for venue, details in venues.items %}
+
+
+  <tr>
+
+    <td><a href="/venue/{{details.id}}">{{venue}}</a> 
+    </td>
+
+    <td>         
+    {{details.city}}, {{details.state}}
+    </td> 
+
+
+   <td>         
+    {%for date in details.dates%}{{date}}{% if not forloop.last %}{% ifequal forloop.revcounter 2 %} and {% else %}, {% endifequal %}{% else %}{% endif %} {% endfor %}
+    </td> 
+
+
+ 
+
+    <td>
+    <a href="/review/{{details.id}}">How'd it go? Gigerate It!</a>
+    </td>
+
+ 
+
+  </tr>
+
+  {% endfor %} 
+
+
+
+</table>
+
+{% endfor %} 
+
+<br>
+<br>
+In another band? <a href='/bandsearchform/'>Add it!</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

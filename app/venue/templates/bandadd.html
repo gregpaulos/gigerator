@@ -1,0 +1,18 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+
+
+<br>
+<h1> Do you want to add {{band.name}} to your profile?
+</h1>
+
+<form id="bandform" method="post" action="" enctype="multipart/form-data">
+ {% csrf_token %} 
+
+<input type="submit" value="Submit" class="btn btn-primary">
+
+</form>
+
+
+{% endblock %}

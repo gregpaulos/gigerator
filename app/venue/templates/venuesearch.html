@@ -1,0 +1,23 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+
+
+<h5>Results</h5>
+
+{% for venue in venues %}
+
+<a href="/venue/{{venue.id}}">{{venue.name}}</a>, {{venue.city}}, {{venue.state}}
+<br>
+{% endfor %}
+
+<br>
+<br>
+Are we missing a venue? <a href="/venueform/"> Add it!</a>
+<br>
+<br>
+Or go back and <a href="/searchform/"> search again</a>
+
+<br>
+<br>
+{% endblock %}

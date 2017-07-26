@@ -1,0 +1,26 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+
+
+{% load static %}
+<img src="{% static "venue/giglogo.png" %}" alt="My image"/>
+
+<b>Rate Your Gigs</b>
+
+<br>
+<br>
+
+  <!-- <h2>Login</h2> -->
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+
+
+<br>
+<br>
+Not registered? <a href = "/signup/">Sign up! </a>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "_venuebase.html" %}
+
+{% block content %}
+
+<h2>Ye of {% for band in venuesdic %}
+{{band}}{% if not forloop.last %}{% ifequal forloop.revcounter 2 %}, and {% else %}, {% endifequal %}{% else %}{% endif %}
+{% endfor %} 
+fame, we salute you! </h2>
+
+<br>
+<br>
+<h3>What would you like to do?</h3>
+<h4><a href="/mygigs/">Rate my recent gigs</a></h4>
+<h4><a href="/searchform/">Search venues</a></h4>
+<br>
+
+
+
+{% endblock %}
